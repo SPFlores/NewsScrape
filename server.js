@@ -1,22 +1,13 @@
-const axios = require('axios')
+const express = require('express')
+const { join } = require('path')
+const app = express()
 
-const cheerio = require('cheerio')
-const db = require('mongojs')('news_db')
+app.use(express.static(join(__dirname, 'public')))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
-axios.get('https://www.nytimes.com/')
-  .then(({ data }) => {
-    const $ = cheerio.load(data)
-    let articleArr = []
-    $('div.css-1ez5fsm.esl82me1').each((i, elem) => {
-      let title = $(elem).children('h2').text()
-      let description = $(elem).parent().children('ul').children('li').text()
-      articleArr.push({
-        link: `www.nytimes.com/${$(elem).parent().attr('href')}`,
-        title: title,
-        description: `${!description ? title : description}`
-      })
-    })
-    console.log(articleArr)
-    // db.articles.insert(articleArr, _ => console.log('some articles added!'))
-  })
+require('./routes')(app)
+
+require('mongoose').connect('mongodb://localhost/news_db', { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true })
+  .then(_ => app.listen(3000))
   .catch(e => console.log(e))
