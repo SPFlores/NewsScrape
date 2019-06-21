@@ -1,3 +1,5 @@
+// still not super sure how to go from here to comments yet
+
 import React, { Component } from 'react'
 
 class Comment extends Component {

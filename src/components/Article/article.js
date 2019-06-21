@@ -16,7 +16,7 @@ class Article extends Component {
             <li>Description: {article.description}</li>
             <li>Link: <a href={article.link}>Click here for article</a></li>
             <button id={article._id} onClick={this.props.delete}>Delete</button>
-            {/* <Comment delete={this.props.delete} /> */}
+            {/* <Comment delete={this.props.delete} comments={article.comments} /> */}
           </div>
         ))}
       </>

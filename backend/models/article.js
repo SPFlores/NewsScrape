@@ -1,5 +1,5 @@
 module.exports = (Schema, model) => {
-  const Post = new Schema({
+  const Article = new Schema({
     headline: String,
     summary: String,
     url: String,
@@ -9,5 +9,5 @@ module.exports = (Schema, model) => {
     }]
   })
 
-  return model('Post', Post)
+  return model('Post', Article)
 }

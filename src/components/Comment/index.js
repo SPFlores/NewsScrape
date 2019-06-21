@@ -1,1 +1,1 @@
-import { default } from './comment.js'
+export { default } from './comment.js'

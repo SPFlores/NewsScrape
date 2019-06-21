@@ -1,1 +1,1 @@
-import { default } from './article.js'
+export { default } from './article.js'

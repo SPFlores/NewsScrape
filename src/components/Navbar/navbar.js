@@ -10,10 +10,10 @@ class Navbar extends Component {
               <div className='nav-wrapper black'>
                 <a href='/' className='brand-logo center'>Article Finder</a>
                 <div id='nav-mobile' className='left'>
-                  <button className='btn blue' onClick={this.props.getArticles}> List </button>
+                  <button className='btn blue' onClick={this.props.get}>Show</button>
                 </div>
                 <div id='nav-mobile' className='right'>
-                  <button className='btn blue' onClick={this.props.postArticles}> Reset </button>
+                  <button className='btn blue' onClick={this.props.seed}>Reset</button>
                 </div>
               </div>
             </nav>
@@ -23,4 +23,5 @@ class Navbar extends Component {
     )
   }
 }
+
 export default Navbar

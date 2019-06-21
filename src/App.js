@@ -38,13 +38,19 @@ class App extends Component {
   getArticles = () => {
     axios.get('/articles')
       .then(articles =>
-        this.setState({ article: articles.data }))
+        this.setState({ articles: articles.data }))
       .catch(e => console.log(e))
   }
 
   deleteArticles = e => {
     axios.delete(`/articles/${e.target.id}`)
       .then(_ => this.getArticles())
+  }
+
+  componentDidMount() {
+    this.fetchArticles()
+      .then(res => this.setState({ data: res.express }))
+      .catch(e => console.log(e))
   }
 
   fetchArticles = async () => {
